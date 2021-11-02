@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Lista de Clientes</span>
+            <button class="btn btn-dark btn-lg float-right" routerLink="/create-cliente">Agregar</button>
+            <h5 style="margin-top: 30px;" *ngIf="clientes.length == 0">No hay datos para mostrar</h5>
+            <table *ngIf="clientes.length > 0" class="table table-striped mt-5">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Fecha de nacimiento</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cliente of clientes">
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.edad }}</td>
+                    <td>{{ cliente.fecha }}</td>
+                    <td>
+                      <i class="fas fa-edit fa-lg text-info mr-2" [routerLink]="['/editCliente/', cliente.id]"></i>
+                      <i (click)="eliminarCliente(cliente.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5>Promedio de edad:</h5>
+              <h5>{{promedio}}</h5>
+              <h5>Desviacion estandar:</h5>
+              <h5>{{desviacion}}</h5>
+        </div>
+    </div>
+</div>
